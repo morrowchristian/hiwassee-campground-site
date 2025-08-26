@@ -1,49 +1,20 @@
-// src/pages/Contact.js
-import Hero from "../components/Hero/Hero";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-export default function Contact() {
+function Contact() {
   return (
-    <>
-      {/* Hero section */}
-      <Hero
-        title="Contact Us"
-        subtitle="Questions? Send us a message and we'll respond promptly."
-        buttonText="Book Your Stay"
-        buttonLink="/book"
-        imageSrc="https://picsum.photos/600/400?5"
-      />
-
-      {/* Contact form */}
-      <Container className="py-5">
-        <Row>
-          <Col md={6}>
-            <Form>
-              <Form.Group className="mb-3" controlId="formName">
-                <Form.Label>Name</Form.Label>
-                <Form.Control type="text" placeholder="Enter your name" required />
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="formEmail">
-                <Form.Label>Email</Form.Label>
-                <Form.Control type="email" placeholder="Enter your email" required />
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="formMessage">
-                <Form.Label>Message</Form.Label>
-                <Form.Control as="textarea" rows={5} placeholder="Write your message" required />
-              </Form.Group>
-              <Button type="submit" variant="success">Send Message</Button>
-            </Form>
-          </Col>
-          <Col md={6}>
-            <h5>Address</h5>
-            <p>123 River Rd, Reliance, TN</p>
-            <h5>Phone</h5>
-            <p>(555) 123-4567</p>
-            <h5>Email</h5>
-            <p>info@hiwasseecampground.com</p>
-          </Col>
-        </Row>
-      </Container>
-    </>
+    <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '40px 20px', marginLeft: '250px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '30px' }}>
+        <div style={{ backgroundColor: '#F5E8C7', padding: '40px', borderRadius: '12px', boxShadow: '0 6px 15px rgba(0,0,0,0.1)', border: '1px solid #E0D7C1' }}>
+          <h1 style={{ fontSize: '32px', fontWeight: '700', color: '#4A5F4D', marginBottom: '20px' }}>Contact Us</h1>
+          <p style={{ marginBottom: '20px' }}>Get in touch with Hiwassee Campground for more information or inquiries.</p>
+          <p style={{ marginBottom: '10px' }}>Email: info@hiwassee campground.com</p>
+          <p style={{ marginBottom: '10px' }}>Phone: (555) 123-4567</p>
+          <p style={{ marginBottom: '20px' }}>Address: 123 River Rd, Hiwassee, TN 37365</p>
+          <Link to="/" style={{ color: '#A84435', textDecoration: 'none', fontWeight: '500' }}>Back to Home</Link>
+        </div>
+      </div>
+    </div>
   );
 }
+
+export default Contact;

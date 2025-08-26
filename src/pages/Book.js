@@ -1,41 +1,26 @@
-// src/pages/Book.js
-import Hero from "../components/Hero/Hero";
-import { Container, Form, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-export default function Book() {
+function Book() {
   return (
-    <>
-      {/* Hero section */}
-      <Hero
-        title="Book Your Stay"
-        subtitle="Fill out the form below to request a reservation."
-        buttonText="Book Now"
-        buttonLink="/book"
-        imageSrc="https://picsum.photos/600/400?6"
-      />
-
-      {/* Booking form */}
-      <Container className="py-5">
-        <Form>
-          <Form.Group className="mb-3" controlId="formName">
-            <Form.Label>Name</Form.Label>
-            <Form.Control type="text" placeholder="Enter your full name" required />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formEmail">
-            <Form.Label>Email</Form.Label>
-            <Form.Control type="email" placeholder="Enter your email" required />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formPhone">
-            <Form.Label>Phone</Form.Label>
-            <Form.Control type="tel" placeholder="Enter your phone number" />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formDates">
-            <Form.Label>Desired Dates</Form.Label>
-            <Form.Control type="text" placeholder="MM/DD/YYYY - MM/DD/YYYY" required />
-          </Form.Group>
-          <Button type="submit" variant="success">Submit Request</Button>
-        </Form>
-      </Container>
-    </>
+    <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '40px 20px', marginLeft: '250px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '30px' }}>
+        <div style={{ backgroundColor: '#F5E8C7', padding: '40px', borderRadius: '12px', boxShadow: '0 6px 15px rgba(0,0,0,0.1)', border: '1px solid #E0D7C1' }}>
+          <h1 style={{ fontSize: '32px', fontWeight: '700', color: '#4A5F4D', marginBottom: '20px' }}>Book Your Stay</h1>
+          <p style={{ marginBottom: '20px' }}>Reserve your spot at Hiwassee Campground today. Choose your dates and site type below.</p>
+          <form style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '15px' }}>
+            <input type="date" style={{ padding: '10px', border: '1px solid #E0D7C1', borderRadius: '6px', width: '100%', fontSize: '16px' }} />
+            <input type="date" style={{ padding: '10px', border: '1px solid #E0D7C1', borderRadius: '6px', width: '100%', fontSize: '16px' }} />
+            <select style={{ padding: '10px', border: '1px solid #E0D7C1', borderRadius: '6px', width: '100%', fontSize: '16px' }}>
+              <option>RV Site</option>
+              <option>Tent Site</option>
+            </select>
+            <button type="submit" style={{ padding: '12px', backgroundColor: '#A84435', color: '#F9F5EB', border: 'none', borderRadius: '6px', cursor: 'pointer', fontSize: '16px', fontWeight: '500' }}>Submit Booking</button>
+          </form>
+          <Link to="/" style={{ color: '#A84435', textDecoration: 'none', marginTop: '20px', display: 'inline-block', fontWeight: '500' }}>Back to Home</Link>
+        </div>
+      </div>
+    </div>
   );
 }
+
+export default Book;
