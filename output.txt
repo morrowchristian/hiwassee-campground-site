@@ -1,0 +1,722 @@
+
+********** Directory: src **********
+
+==============================
+File: src/components/Footer/Footer.js
+==============================
+import styles from "./Footer.module.css"; // Scoped styles for Footer
+
+function Footer() {
+  return (
+    <footer className={styles.footer}>
+      <p>&copy; {new Date().getFullYear()} Hiwassee Campground RV Resort</p>
+      <p>123 River Rd, Hiwassee, TN | (555) 123-4567</p>
+      <p>
+        <a href="/contact">Contact Us</a> | 
+        <a href="/book"> Book a Stay</a>
+      </p>
+    </footer>
+  );
+}
+
+export default Footer;
+
+
+==============================
+File: src/components/Footer/Footer.module.css
+==============================
+/* footer.module.css */
+
+.footer {
+  background-color: #212529; /* same as navbar */
+  color: #f4f4f4;
+  padding: 2rem 0;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.footerLinks {
+  margin-bottom: 1rem;
+}
+
+.footerLinks a {
+  margin: 0 0.75rem;
+  font-weight: 500;
+  color: #28a745;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footerLinks a:hover {
+  color: #f4f4f4;
+}
+
+.footerBottom {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+
+
+==============================
+File: src/components/Navbar/Navbar.js
+==============================
+// Navbar.js
+import { Link } from "react-router-dom";
+import styles from "./Navbar.module.css"; // Scoped styles for Navbar
+
+function Navbar() {
+  return (
+    <nav className={styles.navbar}>
+      {/* Logo or site name (can be replaced with an image later) */}
+      <div className={styles.logo}>Hiwassee Campground</div>
+
+      {/* Navigation Links */}
+      <ul className={styles.links}>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/about">About</Link></li>
+        <li><Link to="/attractions">Attractions</Link></li>
+        <li><Link to="/rates">Rates</Link></li>
+        <li><Link to="/gallery">Gallery</Link></li>
+        <li><Link to="/book">Book Now</Link></li>
+        <li><Link to="/contact">Contact</Link></li>
+      </ul>
+    </nav>
+  );
+}
+
+export default Navbar;
+
+
+==============================
+File: src/components/Navbar/Navbar.module.css
+==============================
+/* navbar.module.css */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #212529; /* dark background */
+  color: #f4f4f4;
+}
+
+.brand {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #f4f4f4;
+}
+
+.brand:hover {
+  color: #28a745; /* highlight color for hover */
+}
+
+.links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.link {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #ddd;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.link:hover {
+  color: #28a745;
+}
+
+.button {
+  font-weight: 600;
+  padding: 0.5rem 1.25rem;
+  border-radius: 30px;
+  background-color: #28a745;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #218838;
+}
+
+@media (max-width: 991px) {
+  .button {
+    margin-top: 10px;
+    width: 100%;
+  }
+}
+
+
+==============================
+File: src/components/Hero/Hero.js
+==============================
+// =========================================
+// File: Hero.js
+// Purpose: Reusable Hero component for all pages
+// Dependencies: React, Hero.css, react-bootstrap (optional for Button)
+// Props:
+//  - title: main heading
+//  - subtitle: descriptive text
+//  - buttonText: text for CTA button
+//  - buttonLink: href/link for CTA button
+//  - imageSrc: URL or local path for hero image
+// Notes:
+//  - Fully responsive
+//  - Supports custom content on any page
+// =========================================
+
+import React from "react";
+import { Button } from "react-bootstrap";
+import "./Hero.css";
+
+export default function Hero({ title, subtitle, buttonText, buttonLink, imageSrc }) {
+  return (
+    <div className="hero">
+      {/* Hero Text Section */}
+      <div className="hero-text">
+        <h1>{title}</h1>
+        <p>{subtitle}</p>
+        {buttonText && buttonLink && (
+          <Button href={buttonLink} variant="success">
+            {buttonText}
+          </Button>
+        )}
+      </div>
+
+      {/* Hero Image Section */}
+      <div className="hero-image">
+        {imageSrc && <img src={imageSrc} alt={title} />}
+      </div>
+    </div>
+  );
+}
+
+
+==============================
+File: src/components/Hero/Hero.css
+==============================
+/* =========================================
+   File: Hero.css
+   Purpose: Styles for reusable Hero component
+   Dependencies: imported in Hero.js
+   Notes:
+   - Designed to work on all pages with Hero.js
+   - Fully responsive, uses flex/grid for layout
+   - Supports background images, text, and CTA buttons
+========================================= */
+
+/* Base hero container */
+.hero {
+  display: flex;                  /* Flex layout for text + image */
+  align-items: center;            /* Vertical center alignment */
+  justify-content: space-between; /* Space between text and image */
+  padding: 60px 20px;             /* Top/bottom and side padding */
+  background-color: #f8f9fa;      /* Light background fallback */
+  flex-wrap: wrap;                /* Wrap on smaller screens */
+}
+
+/* Hero text container */
+.hero-text {
+  flex: 1 1 400px;                /* Grow, shrink, base width */
+  max-width: 600px;               /* Prevent overly wide text */
+  margin-bottom: 20px;            /* Space for mobile stacking */
+}
+
+/* Hero main title */
+.hero-text h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #212529;
+}
+
+/* Hero subtitle/description */
+.hero-text p {
+  font-size: 1.25rem;
+  margin-bottom: 30px;
+  color: #495057;
+}
+
+/* Hero CTA button */
+.hero-text .btn {
+  font-size: 1.2rem;
+  padding: 0.75rem 1.5rem;
+}
+
+/* Hero image container */
+.hero-image {
+  flex: 1 1 300px;               /* Grow/shrink, base width */
+  text-align: center;             /* Center image on small screens */
+}
+
+/* Hero image */
+.hero-image img {
+  max-width: 100%;                /* Responsive image */
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hero image hover effect */
+.hero-image img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .hero {
+    flex-direction: column;       /* Stack text + image vertically */
+    text-align: center;
+  }
+
+  .hero-text {
+    margin-bottom: 30px;          /* More space before image */
+  }
+
+  .hero-text h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-text p {
+    font-size: 1.1rem;
+  }
+
+  .hero-text .btn {
+    font-size: 1.1rem;
+    padding: 0.65rem 1.3rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+  }
+
+  .hero-text .btn {
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
+
+
+==============================
+File: src/index.js
+==============================
+// index.js
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import { BrowserRouter } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const basename = process.env.NODE_ENV === 'production'
+  ? '/hiwassee-campground-site'
+  : '/';
+
+root.render(
+  <React.StrictMode>
+    <BrowserRouter basename={basename}>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>
+);
+
+
+==============================
+File: src/App.js
+==============================
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
+
+// Import page components
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Attractions from "./pages/Attractions";
+import Book from "./pages/Book";
+import Contact from "./pages/Contact";
+import Gallery from "./pages/Gallery";
+import Rates from "./pages/Rates";
+
+function App() {
+  return (
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/attractions" element={<Attractions />} />
+        <Route path="/book" element={<Book />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/rates" element={<Rates />} />
+      </Routes>
+      <Footer />
+    </>
+  );
+}
+
+export default App;
+
+==============================
+File: src/pages/Attractions.js
+==============================
+// src/pages/Attractions.js
+import { Container, Row, Col, Card } from "react-bootstrap";
+import Hero from "../components/Hero/Hero";
+
+export default function Attractions() {
+  // Attractions array can eventually come from API or CMS
+  const attractions = [
+    { title: "Hiking Trails", description: "Explore miles of scenic trails.", img: "https://picsum.photos/400/250?7" },
+    { title: "Kayaking & Fishing", description: "Fun on the Hiwassee River.", img: "https://picsum.photos/400/250?8" },
+    { title: "Local Dining", description: "Enjoy nearby restaurants and cafes.", img: "https://picsum.photos/400/250?9" },
+  ];
+
+  return (
+    <div>
+      {/* Hero Section for Attractions page */}
+      <Hero
+        title="Nearby Attractions"
+        subtitle="Discover fun activities, dining, and outdoor adventures around Hiwassee Campground."
+        buttonText="Plan Your Visit"
+        buttonLink="/book"
+        imageSrc="https://picsum.photos/600/400?7" // placeholder
+      />
+
+      {/* List of attractions */}
+      <Container className="py-5">
+        <Row className="g-4">
+          {attractions.map((item, idx) => (
+            <Col md={4} key={idx}>
+              <Card className="h-100 text-center">
+                <Card.Img variant="top" src={item.img} />
+                <Card.Body>
+                  <Card.Title>{item.title}</Card.Title>
+                  <Card.Text>{item.description}</Card.Text>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </Container>
+    </div>
+  );
+}
+
+==============================
+File: src/pages/About.js
+==============================
+// src/pages/About.js
+import Hero from "../components/Hero/Hero";
+import { Container, Row, Col, Image } from "react-bootstrap";
+
+export default function About() {
+  return (
+    <>
+      {/* Hero section */}
+      <Hero
+        title="About Hiwassee Campground"
+        subtitle="Over 20 years of outdoor adventures and family-friendly experiences."
+        buttonText="Book Your Stay"
+        buttonLink="/book"
+        imageSrc="https://picsum.photos/600/400?2"
+      />
+
+      {/* About content */}
+      <Container className="py-5">
+        <Row className="align-items-center">
+          <Col md={6}>
+            <p>
+              Hiwassee Campground RV Resort has been welcoming guests for over 20 years.
+              Nestled along the scenic Hiwassee River, we provide the perfect getaway
+              for families, adventurers, and nature lovers.
+            </p>
+            <p>
+              Our mission is to offer a relaxing and fun outdoor experience while
+              maintaining the natural beauty of the area.
+            </p>
+          </Col>
+          <Col md={6}>
+            <Image
+              src="https://picsum.photos/600/400?2"
+              alt="Campground view"
+              fluid
+              rounded
+            />
+          </Col>
+        </Row>
+      </Container>
+    </>
+  );
+}
+
+
+==============================
+File: src/pages/Home.js
+==============================
+// src/pages/Home.js
+import Hero from "../components/Hero/Hero";
+import { Container, Row, Col, Card } from "react-bootstrap";
+import { FaWater, FaWifi, FaHiking } from "react-icons/fa";
+
+export default function Home() {
+  return (
+    <>
+      {/* Hero section */}
+      <Hero
+        title="Welcome to Hiwassee Campground"
+        subtitle="Relax, explore, and enjoy scenic river views, modern amenities, and outdoor adventures."
+        buttonText="Book Your Stay"
+        buttonLink="/book"
+        imageSrc="https://picsum.photos/600/400?grayscale"
+      />
+
+      {/* Why Choose Us Section */}
+      <Container className="py-5">
+        <h2 className="text-center mb-4">Why Choose Us?</h2>
+        <Row className="g-4">
+          <Col md={4}>
+            <Card className="h-100 text-center p-3">
+              <FaWater size={48} className="mb-3 text-success" />
+              <Card.Title>Scenic River Views</Card.Title>
+              <Card.Text>
+                Wake up to breathtaking views of the Hiwassee River from every campsite.
+              </Card.Text>
+            </Card>
+          </Col>
+          <Col md={4}>
+            <Card className="h-100 text-center p-3">
+              <FaWifi size={48} className="mb-3 text-success" />
+              <Card.Title>Modern Amenities</Card.Title>
+              <Card.Text>
+                Full hookups, Wi-Fi, clean facilities, and everything you need for a comfortable stay.
+              </Card.Text>
+            </Card>
+          </Col>
+          <Col md={4}>
+            <Card className="h-100 text-center p-3">
+              <FaHiking size={48} className="mb-3 text-success" />
+              <Card.Title>Outdoor Adventures</Card.Title>
+              <Card.Text>
+                Hiking, kayaking, fishing, and family fun just steps from your tent or cabin.
+              </Card.Text>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+    </>
+  );
+}
+
+
+==============================
+File: src/pages/Rates.js
+==============================
+// src/pages/Rates.js
+import Hero from "../components/Hero/Hero";
+import { Container, Table } from "react-bootstrap";
+
+export default function Rates() {
+  return (
+    <>
+      {/* Hero section */}
+      <Hero
+        title="Rates & Amenities"
+        subtitle="Affordable camping options with modern facilities and scenic views."
+        buttonText="Book Your Stay"
+        buttonLink="/book"
+        imageSrc="https://picsum.photos/600/400?3"
+      />
+
+      {/* Rates table */}
+      <Container className="py-5">
+        <p>All sites include access to our modern facilities, Wi-Fi, and scenic views.</p>
+        <Table striped bordered hover responsive>
+          <thead>
+            <tr>
+              <th>Site Type</th>
+              <th>Nightly Rate</th>
+              <th>Amenities</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>RV Full Hookup</td>
+              <td>$45</td>
+              <td>Water, Electric, Sewer, Wi-Fi</td>
+            </tr>
+            <tr>
+              <td>RV Partial Hookup</td>
+              <td>$35</td>
+              <td>Water, Electric, Wi-Fi</td>
+            </tr>
+            <tr>
+              <td>Tent Site</td>
+              <td>$25</td>
+              <td>Water, Wi-Fi</td>
+            </tr>
+          </tbody>
+        </Table>
+      </Container>
+    </>
+  );
+}
+
+
+==============================
+File: src/pages/Gallery.js
+==============================
+// src/pages/Gallery.js
+import Hero from "../components/Hero/Hero";
+import { Container, Row, Col, Image } from "react-bootstrap";
+
+export default function Gallery() {
+  const images = [
+    "https://picsum.photos/400/300?1",
+    "https://picsum.photos/400/300?2",
+    "https://picsum.photos/400/300?3",
+    "https://picsum.photos/400/300?4",
+    "https://picsum.photos/400/300?5",
+    "https://picsum.photos/400/300?6",
+  ];
+
+  return (
+    <>
+      {/* Hero section */}
+      <Hero
+        title="Photo Gallery"
+        subtitle="Explore snapshots of our beautiful campground and adventures."
+        buttonText="Book Your Stay"
+        buttonLink="/book"
+        imageSrc="https://picsum.photos/600/400?4"
+      />
+
+      {/* Gallery images */}
+      <Container className="py-5">
+        <Row className="g-3">
+          {images.map((src, index) => (
+            <Col md={4} key={index}>
+              <Image src={src} alt={`Gallery ${index + 1}`} fluid rounded />
+            </Col>
+          ))}
+        </Row>
+      </Container>
+    </>
+  );
+}
+
+
+
+==============================
+File: src/pages/Contact.js
+==============================
+// src/pages/Contact.js
+import Hero from "../components/Hero/Hero";
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
+
+export default function Contact() {
+  return (
+    <>
+      {/* Hero section */}
+      <Hero
+        title="Contact Us"
+        subtitle="Questions? Send us a message and we'll respond promptly."
+        buttonText="Book Your Stay"
+        buttonLink="/book"
+        imageSrc="https://picsum.photos/600/400?5"
+      />
+
+      {/* Contact form */}
+      <Container className="py-5">
+        <Row>
+          <Col md={6}>
+            <Form>
+              <Form.Group className="mb-3" controlId="formName">
+                <Form.Label>Name</Form.Label>
+                <Form.Control type="text" placeholder="Enter your name" required />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formEmail">
+                <Form.Label>Email</Form.Label>
+                <Form.Control type="email" placeholder="Enter your email" required />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formMessage">
+                <Form.Label>Message</Form.Label>
+                <Form.Control as="textarea" rows={5} placeholder="Write your message" required />
+              </Form.Group>
+              <Button type="submit" variant="success">Send Message</Button>
+            </Form>
+          </Col>
+          <Col md={6}>
+            <h5>Address</h5>
+            <p>123 River Rd, Reliance, TN</p>
+            <h5>Phone</h5>
+            <p>(555) 123-4567</p>
+            <h5>Email</h5>
+            <p>info@hiwasseecampground.com</p>
+          </Col>
+        </Row>
+      </Container>
+    </>
+  );
+}
+
+
+==============================
+File: src/pages/Book.js
+==============================
+// src/pages/Book.js
+import Hero from "../components/Hero/Hero";
+import { Container, Form, Button } from "react-bootstrap";
+
+export default function Book() {
+  return (
+    <>
+      {/* Hero section */}
+      <Hero
+        title="Book Your Stay"
+        subtitle="Fill out the form below to request a reservation."
+        buttonText="Book Now"
+        buttonLink="/book"
+        imageSrc="https://picsum.photos/600/400?6"
+      />
+
+      {/* Booking form */}
+      <Container className="py-5">
+        <Form>
+          <Form.Group className="mb-3" controlId="formName">
+            <Form.Label>Name</Form.Label>
+            <Form.Control type="text" placeholder="Enter your full name" required />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formEmail">
+            <Form.Label>Email</Form.Label>
+            <Form.Control type="email" placeholder="Enter your email" required />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formPhone">
+            <Form.Label>Phone</Form.Label>
+            <Form.Control type="tel" placeholder="Enter your phone number" />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formDates">
+            <Form.Label>Desired Dates</Form.Label>
+            <Form.Control type="text" placeholder="MM/DD/YYYY - MM/DD/YYYY" required />
+          </Form.Group>
+          <Button type="submit" variant="success">Submit Request</Button>
+        </Form>
+      </Container>
+    </>
+  );
+}
+

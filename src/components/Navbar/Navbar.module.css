@@ -1,0 +1,139 @@
+/* navbar.module.css */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: linear-gradient(90deg, #212529 0%, #2c3034 100%);
+  color: #f4f4f4;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease;
+}
+
+.logo {
+  font-family: 'Poppins', sans-serif;
+  transition: transform 0.3s ease;
+}
+
+.logo img {
+  height: 40px; /* Adjust based on your logo size */
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover img {
+  transform: scale(1.05);
+}
+
+.links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.links li a {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #ddd;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.links li a:hover {
+  color: #28a745;
+}
+
+.links li a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #28a745;
+  transition: width 0.3s ease;
+}
+
+.links li a:hover::after {
+  width: 100%;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: #f4f4f4;
+  transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .logo img {
+    height: 35px; /* Slightly smaller for mobile */
+  }
+
+  .links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: #212529;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .links.active {
+    display: flex;
+    animation: slideIn 0.3s ease-in-out;
+  }
+
+  .links li {
+    margin: 0.5rem 0;
+  }
+
+  .links li a {
+    font-size: 1.2rem;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

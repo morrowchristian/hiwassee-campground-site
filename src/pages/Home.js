@@ -1,35 +1,19 @@
-import React from "react";
-import { Container, Row, Col, Button, Card } from "react-bootstrap";
+// src/pages/Home.js
+import Hero from "../components/Hero/Hero";
+import { Container, Row, Col, Card } from "react-bootstrap";
 import { FaWater, FaWifi, FaHiking } from "react-icons/fa";
+
 export default function Home() {
   return (
-    <div>
-      {/* Hero Section - Split Layout */}
-      <div className="bg-light py-5">
-        <Container>
-          <Row className="align-items-center">
-            {/* Text Column */}
-            <Col md={6}>
-              <h1 className="display-4 fw-bold">Welcome to Hiwassee Campground</h1>
-              <p className="lead">
-                Relax, explore, and enjoy scenic river views, modern amenities, and outdoor adventures.
-              </p>
-              <Button href="/book" variant="success" size="lg">
-                Book Your Stay
-              </Button>
-            </Col>
-
-            {/* Image Column */}
-            <Col md={6}>
-              <img
-                src="https://picsum.photos/600/400?grayscale"
-                alt="Scenic river view"
-                className="img-fluid rounded shadow"
-              />
-            </Col>
-          </Row>
-        </Container>
-      </div>
+    <>
+      {/* Hero section */}
+      <Hero
+        title="Welcome to Hiwassee Campground"
+        subtitle="Relax, explore, and enjoy scenic river views, modern amenities, and outdoor adventures."
+        buttonText="Book Your Stay"
+        buttonLink="/book"
+        imageSrc="https://picsum.photos/600/400?grayscale"
+      />
 
       {/* Why Choose Us Section */}
       <Container className="py-5">
@@ -64,6 +48,6 @@ export default function Home() {
           </Col>
         </Row>
       </Container>
-    </div>
+    </>
   );
 }

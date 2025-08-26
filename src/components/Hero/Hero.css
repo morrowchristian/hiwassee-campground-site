@@ -1,0 +1,108 @@
+/* =========================================
+   File: Hero.css
+   Purpose: Styles for reusable Hero component
+   Dependencies: imported in Hero.js
+   Notes:
+   - Designed to work on all pages with Hero.js
+   - Fully responsive, uses flex/grid for layout
+   - Supports background images, text, and CTA buttons
+========================================= */
+
+/* Base hero container */
+.hero {
+  display: flex;                  /* Flex layout for text + image */
+  align-items: center;            /* Vertical center alignment */
+  justify-content: space-between; /* Space between text and image */
+  padding: 60px 20px;             /* Top/bottom and side padding */
+  background-color: #f8f9fa;      /* Light background fallback */
+  flex-wrap: wrap;                /* Wrap on smaller screens */
+}
+
+/* Hero text container */
+.hero-text {
+  flex: 1 1 400px;                /* Grow, shrink, base width */
+  max-width: 600px;               /* Prevent overly wide text */
+  margin-bottom: 20px;            /* Space for mobile stacking */
+}
+
+/* Hero main title */
+.hero-text h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #212529;
+}
+
+/* Hero subtitle/description */
+.hero-text p {
+  font-size: 1.25rem;
+  margin-bottom: 30px;
+  color: #495057;
+}
+
+/* Hero CTA button */
+.hero-text .btn {
+  font-size: 1.2rem;
+  padding: 0.75rem 1.5rem;
+}
+
+/* Hero image container */
+.hero-image {
+  flex: 1 1 300px;               /* Grow/shrink, base width */
+  text-align: center;             /* Center image on small screens */
+}
+
+/* Hero image */
+.hero-image img {
+  max-width: 100%;                /* Responsive image */
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hero image hover effect */
+.hero-image img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .hero {
+    flex-direction: column;       /* Stack text + image vertically */
+    text-align: center;
+  }
+
+  .hero-text {
+    margin-bottom: 30px;          /* More space before image */
+  }
+
+  .hero-text h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-text p {
+    font-size: 1.1rem;
+  }
+
+  .hero-text .btn {
+    font-size: 1.1rem;
+    padding: 0.65rem 1.3rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+  }
+
+  .hero-text .btn {
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
